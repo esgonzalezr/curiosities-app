@@ -1,0 +1,21 @@
+<div *ngIf="pokemon; else loading">
+
+    <div class="grid">
+        <p-card class="col-12 md:col-6 lg:col-5">
+            <img [src]="pokemon.sprites.other?.dream_world?.front_default" [alt]="pokemon.name"
+                style="width: 20rem; height: 20rem; margin-left: auto; margin-right: auto; display: block;">
+        </p-card>
+        <p-card [header]="pokemon.name | titlecase" class="col">
+            <p> <b>Code: </b> {{ pokemon.id }} </p>
+            <p> <b>Height: </b> {{ pokemon.height }} mts </p>
+            <p> <b>Weight: </b> {{ pokemon.weight }} kg </p>
+            <span *ngFor="let type of pokemon.types">
+                <p-chip [label]="type.type['name'] | titlecase" icon="pi pi-star-fill" class="m-1"></p-chip>
+            </span>
+        </p-card>
+    </div>
+</div>
+
+<ng-template #loading>
+    <p>Loading pokemon details...</p>
+</ng-template>
